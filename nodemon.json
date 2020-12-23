@@ -1,0 +1,14 @@
+{
+    "watch": ["."],
+    "ignore": ["*.test.js","fixtures/*"],
+    "ext" : "ts,pas,lpr",
+    "execMap" : {
+        "ts": "sucrase-node src/server.ts",
+        "pas": "T:/pas2js/new/pas2js/trunk/bin/i386-win32/pas2js -Jc -Jirtl.js -Tbrowser -Jminclude -JRjs {{filename}}",
+        "lpr": "T:/pas2js/new/pas2js/trunk/bin/i386-win32/pas2js -Jc -Jirtl.js -Tbrowser -Jminclude -JRjs {{filename}} -FuT:/pas2js/new/pas2js/trunk/packages/fcl-db"
+        },
+    "events": {
+        "start": "cls || clear"
+    }
+  
+}

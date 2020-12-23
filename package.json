@@ -1,0 +1,17 @@
+{
+  "name": "vscode_pas2js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon scr/demoxhr.lpr"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.3",
+    "sucrase": "^3.10.1",
+    "ts-node": "^8.4.1",
+    "typescript": "^3.5.3"
+  },
+  "author": "Cristiano Barbosa",
+  "license": "LGPL"
+}
