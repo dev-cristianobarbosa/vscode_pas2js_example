@@ -24,5 +24,5 @@ $ npm run dev
 
 | Plugin | README |
 | ------ | ------ |
-| Install | [https://youtu.be/VNruNJjdPws][PlDb] |
+| Install | [https://youtu.be/Vvwaf34wOeU][PlDb] |
 
