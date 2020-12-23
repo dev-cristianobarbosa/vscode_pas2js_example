@@ -11,7 +11,7 @@ Type
     Table,
     Panel,
     PanelContent,
-    Button:TJSElement;
+    Button, Button1:TJSElement;
     edtnome,
     edtcodigo : TJSHTMLInputElement;
     function onLoad(Event: TEventListenerEvent): boolean;
@@ -32,21 +32,7 @@ Var
   C : TJSElement;
 
 begin
-  Result:=document.createElement('TR');
-
-  C:=document.createElement('TD');
-  Result.Append(C);
-  C.AppendChild(document.createTextNode(IntToStr(AId)));
-
-  C:=document.createElement('TD');
-  Result.Append(C);
-  C.AppendChild(document.createTextNode(ATipo));
-
-  Result.Append(CollumnDataNew(ANome));
-  Result.Append(CollumnDataNew(AFantasia));
-  Result.Append(CollumnDataNew(ACpf));
-  Result.Append(CollumnDataNew(ARg));
-  Result.Append(CollumnDataNew(AIm));
+  
  
 
 end;
@@ -74,24 +60,7 @@ Var
   TH,R,H : TJSElement;
 
 begin
-  Result:=document.createElement('TABLE');
-  Result.className:='table table-striped table-bordered table-hover table-condensed';
-  
-  TH:=document.createElement('THEAD');
-  Result.Append(TH);
-  R:=document.createElement('TR');
-  TH.Append(R);
- 
-  H:=document.createElement('TH');
-  R.Append(H);
-  H.AppendChild(document.createTextNode('ID'));
-  
-  R.Append(CollumnTitleNew('Tipo Pessoa'));
-  R.Append(CollumnTitleNew('Nome / Razão Social'));
-  R.Append(CollumnTitleNew('Apelido / Nome Fantasia'));
-  R.Append(CollumnTitleNew('CPF / CNPJ'));
-  R.Append(CollumnTitleNew('RG / IE'));
-  R.Append(CollumnTitleNew('Inscrição Municipal'));
+
   
 end;
 
@@ -104,72 +73,14 @@ var
   N,TB : TJSElement;
 
 begin
-  console.log('Result of call ',xhr.Status);
-{  While (PanelContent.childNodes.length>0) do
-    PanelContent.removeChild(PanelContent.childNodes.item(PanelContent.childNodes.length-1));}
-  if (xhr.status = 200) then
-    begin
-    J:=TJSJSON.parseObject(xhr.responseText);
-    //A:=TJSObjectDynArray(J.Properties['Data']);
-    A:=TJSObjectDynArray(J.Properties['webgetpessoa']);
-    
-    if assigned(Table) then
-      Document.Body.removeChild(Table);
-
-    Table:=CreateTable;
-    Document.Body.append(Table);
-    TB:=document.createElement('TBODY');
-    Table.Append(TB);
-
-    for I:=0 to Length(A)-1 do
-      begin
-      C:=A[i];
-      //TB.Append(CreateRow(String(C.Properties['Name']),Integer(C.Properties['Population'])));
-      TB.Append(CreateRow(
-       Integer(C.Properties['ID'])
-      ,String(C.Properties['TIPO'])
-      ,String(C.Properties['NOME_RAZAO'])
-      ,String(C.Properties['APELIDO_FANTASIA'])
-      ,String(C.Properties['CPF_CNPJ'])
-      ,String(C.Properties['RG_IE'])
-      ,String(C.Properties['IM'])
-      
-      ));
-
-      {,String(C.Properties['LOGRADOURO'])
-      ,String(C.Properties['NUMERO'])
-      ,String(C.Properties['COMPLEMENTO'])
-      ,String(C.Properties['BAIRRO'])
-      ,String(C.Properties['CEP'])
-      ,String(C.Properties['MUNICIPIO'])
-      ,String(C.Properties['UF']
-      }
-      end;
-    end
-  else
-    begin
-    N:=Document.CreateElement('div');
-    N.appendChild(Document.createTextNode('Failed to load countries: '+IntToStr(xhr.Status)));
-    PanelContent.append(N);
-    end;
+ 
   Result := True;
 end;
 
 function TForm.ButtonClick(Event: TJSMouseEvent): boolean;
-var
-  svar:string;
+
 begin
-  xhr:=TJSXMLHttpRequest.New;
-  xhr.addEventListener('load', @OnLoad);
- //xhr.open('GET', 'countries.json', true);
- svar:='0';
- if (edtnome.Value <>'') then 
-   svar:=edtnome.Value;
-
-
- xhr.open('GET', 'http://www.restdw.ddns.com.br:9095/webgetpessoa?id='+svar, true);
- xhr.send;
-  Result:=true;
+ 
 end;
 
 
@@ -208,14 +119,22 @@ begin
   Button['id']:='Button1';
   Button['type']:='submit';
   Button.className:='btn btn-default';
-  Button['value']:='Pesquisar.';
+  Button['value']:='Pesquisa';
+
+  
+  Button1:=document.createElement('input');
+  Button1['id']:='Button11';
+  Button1['type']:='submit';
+  Button1.className:='btn btn-default';
+  Button1['value']:='Cadastro';
+
   TJSHTMLElement(Button).onclick:=@ButtonClick;
 
   document.body.appendChild(panel);
   Panel.appendChild(PanelContent);
 
   PanelContent.appendChild(Button);
-  PanelContent.appendChild(Button);
+  PanelContent.appendChild(Button1);
   edtnome:=CreateNumberEdit('edtnome');
   edtnome.placeholder:='Digite um ID de PESSOA para localizar.';
   edtnome['style']:='width: 600px;';
