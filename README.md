@@ -21,3 +21,8 @@ $ npm install
 $ npm run dev
 ```
 - Open the demoxhr.html file with Live Server
+
+| Plugin | README |
+| ------ | ------ |
+| Install | [https://youtu.be/VNruNJjdPws][PlDb] |
+
