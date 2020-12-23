@@ -134,7 +134,7 @@ begin
   Panel.appendChild(PanelContent);
 
   PanelContent.appendChild(Button);
-  PanelContent.appendChild(Button1);
+ // PanelContent.appendChild(Button1);
   edtnome:=CreateNumberEdit('edtnome');
   edtnome.placeholder:='Digite um ID de PESSOA para localizar.';
   edtnome['style']:='width: 600px;';
